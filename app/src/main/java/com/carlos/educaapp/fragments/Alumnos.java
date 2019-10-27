@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 
 import com.carlos.educaapp.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Compartir extends Fragment {
+public class Alumnos extends Fragment {
 
 
-    public Compartir() {
+    public Alumnos() {
         // Required empty public constructor
     }
 
@@ -24,7 +25,7 @@ public class Compartir extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_estadistica, container, false);
+        return inflater.inflate(R.layout.fragment_alumnos, container, false);
     }
 
 }

@@ -9,9 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.carlos.educaapp.R;
-import com.carlos.educaapp.fragments.Compartir;
-import com.carlos.educaapp.fragments.Estadistica;
-import com.carlos.educaapp.fragments.Historial;
+import com.carlos.educaapp.fragments.Lista;
+import com.carlos.educaapp.fragments.Perfil;
+import com.carlos.educaapp.fragments.Alumnos;
 import com.carlos.educaapp.fragments.Reportes;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -32,13 +32,13 @@ BottomNavigationView mbottomNavigationView;
                     showSelectedFragment(new Reportes());
                 }
                 if (menuItem.getItemId()==R.id.option2){
-                    showSelectedFragment(new Historial());
+                    showSelectedFragment(new Alumnos());
                 }
                 if (menuItem.getItemId()==R.id.option3){
-                    showSelectedFragment(new Compartir());
+                    showSelectedFragment(new Lista());
                 }
                 if (menuItem.getItemId()==R.id.option4){
-                    showSelectedFragment(new Estadistica());
+                    showSelectedFragment(new Perfil());
                 }
                 return true;
             }
