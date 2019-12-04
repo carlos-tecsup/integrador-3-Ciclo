@@ -112,8 +112,8 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                interfaceComunicaFragments.enviarIncidencia(listaIncidencias.get(recyclerReportes.getChildAdapterPosition(view)));
+/*
+                interfaceComunicaFragments.enviarIncidencia(listaIncidencias.get(recyclerReportes.getChildAdapterPosition(view)));*/
             }
         });
 
@@ -137,7 +137,7 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
         }
     }
 
-    @Override
+  /*  @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
@@ -150,13 +150,13 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
             throw new RuntimeException(context.toString()
                 + " must implement OnFragmentInteractionListener");
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
+    }*/
 
     @Override
     public void onClick(View view) {

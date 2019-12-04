@@ -64,7 +64,7 @@ public class ListaAlumnosFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     RecyclerView recyclerAlumno;
-    ArrayList<AlumnosPojo> listaAlumnos;
+
     Activity activity;
     IComunicaFragmentsAlumnos interfaceComunicaFragmentsAlumnos;
 
@@ -139,17 +139,19 @@ public class ListaAlumnosFragment extends Fragment {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
 
         toolbar.setTitle("LISTA DE ALUMNOS");
-        listaAlumnos=new ArrayList<>();
+
 
         recyclerAlumno= (RecyclerView)vista.findViewById(R.id.RecyclerAlumnos);
         recyclerAlumno.setLayoutManager(new LinearLayoutManager(getContext()));
-        llenarLista();
-        AdapterAlumnos adapter=new AdapterAlumnos(listaAlumnos);
+        //llenarLista();
+
+        AdapterAlumnos adapter=new AdapterAlumnos();
         recyclerAlumno.setAdapter(adapter);
+
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interfaceComunicaFragmentsAlumnos.enviarAlumnos(listaAlumnos.get(recyclerAlumno.getChildAdapterPosition(view)));
+               /* interfaceComunicaFragmentsAlumnos.enviarAlumnos(listaAlumnos.get(recyclerAlumno.getChildAdapterPosition(view)));*/
              }
         });
         testRest();
@@ -187,6 +189,9 @@ public class ListaAlumnosFragment extends Fragment {
                 if(response.isSuccessful()){
                     List<Alumnos> alumnos=response.body();
                     Log.d("Activity","alumnos"+alumnos);
+                    AdapterAlumnos adapter=(AdapterAlumnos)recyclerAlumno.getAdapter();
+                    adapter.setListaAlumnos(alumnos);
+                    adapter.notifyDataSetChanged();
                 }else {
                     Toast.makeText(getContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
                 }
@@ -232,16 +237,7 @@ public class ListaAlumnosFragment extends Fragment {
 
                 });}
 
-    private void llenarLista() {
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 incidencias","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Carlos","Huaynates","Soto","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-        listaAlumnos.add(new AlumnosPojo("Robert","Espinoza","Solano","8 faltas","C24B","maria26@gmail.com"));
-    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -250,7 +246,7 @@ public class ListaAlumnosFragment extends Fragment {
         }
     }
 
-    @Override
+   /* @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -266,13 +262,13 @@ public class ListaAlumnosFragment extends Fragment {
             throw new RuntimeException(context.toString()
                 + " must implement OnFragmentInteractionListener");
         }
-    }
-
+    }*/
+/*
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
+    }*/
 
 
     public interface OnFragmentInteractionListener {

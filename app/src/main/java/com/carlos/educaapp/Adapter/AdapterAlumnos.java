@@ -15,15 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.ViewHolderAlumnos> implements View.OnClickListener {
-    private List<Alumnos>   AlumnosLista;
+    private List<Alumnos>  listaAlumnos;
     @NonNull
 
 
 
-    ArrayList<AlumnosPojo> listaAlumnos;
     private View.OnClickListener listener;
 
-    public AdapterAlumnos(@NonNull ArrayList<AlumnosPojo> listaAlumnos) {
+    public AdapterAlumnos(){
+        this.listaAlumnos=new ArrayList<>();
+    }
+    public void setListaAlumnos(List<Alumnos> listaAlumnos) {
         this.listaAlumnos = listaAlumnos;
     }
 
@@ -39,8 +41,8 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAlumnos viewHolderAlumnos, int i) {
         viewHolderAlumnos.nombre.setText(listaAlumnos.get(i).getNombre());
-        viewHolderAlumnos.apellidosmaternos.setText(listaAlumnos.get(i).getApellidosMaternos());
-        viewHolderAlumnos.apellidospaternos.setText(listaAlumnos.get(i).getApellidosPaternos());
+        viewHolderAlumnos.apellidosmaternos.setText(listaAlumnos.get(i).getApeMaterno());
+        viewHolderAlumnos.apellidospaternos.setText(listaAlumnos.get(i).getApePaterno());
         //viewHolderAlumnos.correo.setText(listaAlumnos.get(i).getCorreo());
         //viewHolderAlumnos.seccion.setText(listaAlumnos.get(i).getSeccion());
         //viewHolderAlumnos.faltas.setText(listaAlumnos.get(i).getFaltas());
