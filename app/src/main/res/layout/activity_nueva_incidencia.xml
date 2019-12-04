@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#ECEFF1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+
+
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:orientation="vertical"
+
+        >
+
+
+<!--        <TextView
+
+            android:id="@+id/idReporte"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="13dp"
+
+            android:layout_height="wrap_content"
+
+            android:text="NUEVA INCIDENCIA"
+            android:textSize="23sp"
+            android:layout_gravity="center"
+
+            android:textStyle="bold" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+
+<!--
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_horizontal"
+
+                    android:text="¿A qué hora sucedió?"
+
+                    android:textSize="24sp" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+
+
+                    <Button
+
+                        android:id="@+id/buttonfecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Hora"
+                        android:textColor="@color/fondo"
+                        android:textColorHint="@color/colorDark" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <EditText
+                            android:id="@+id/editTextHora"
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+
+                            android:ems="10"
+
+                             />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+<!--
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+
+                    android:text="¿Cuándo sucedió?"
+
+
+                    android:textSize="24sp" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/buttonhora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Fecha"
+                        android:textColor="@color/fondo"
+                        android:textColorHint="@color/colorDark" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <EditText
+                            android:id="@+id/editTextFecha"
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                             />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:orientation="vertical"
+
+            >
+
+
+
+
+            <TextView
+
+                android:id="@+id/idLugar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
+                android:layout_marginLeft="12dp"
+                android:text="Lugar de incidencia"
+
+                android:textSize="22sp"
+                android:textStyle="bold"
+
+
+                />
+
+
+            <Spinner
+                android:id="@+id/SpinnerLugar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/idSuceso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginLeft="12dp"
+
+            android:layout_marginTop="10dp"
+            android:text="Tipo de incidencia"
+            android:textSize="22sp"
+            android:textStyle="bold"
+
+
+            />
+
+        <Spinner
+            android:id="@+id/SpinnerTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:orientation="vertical"
+
+            >
+
+
+            <TextView
+                android:id="@+id/idGrado"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginTop="20dp"
+                android:text="Grado Alumnos"
+                android:textSize="22sp"
+                android:textStyle="bold"
+
+
+                />
+
+            <Spinner
+                android:id="@+id/SpinnerGrado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/idSeccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="20dp"
+
+                android:gravity="center_horizontal"
+                android:text="Sección alumnos"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/SpinnerSeccion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+
+
+            <Button
+                android:id="@+id/btnAlumnosInvolucrados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="13dp"
+                android:layout_marginLeft="23dp"
+                android:text="Alumnos Involucrados"
+                android:textColor="@color/fondo"
+                android:background="@color/colorPrimary"
+                />
+
+            <TextView
+                android:id="@+id/textAlumnosInvolucrados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+
+                android:textSize="20dp" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/Descripcion"
+                android:text="Descripción"
+                android:textSize="22sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
+            <EditText
+                android:id="@+id/DescripcionIncidencia"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="GUARDAR" />
+
+
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:orientation="vertical"
+
+            >
+
+
+
+
+          <!--  <Button
+                android:layout_marginTop="20dp"
+                android:id="@+id/idGuardar"
+                android:text="GUARDAR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="callRegister"/>-->
+
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    </LinearLayout>
+

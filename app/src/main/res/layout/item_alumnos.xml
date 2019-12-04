@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  android:orientation="horizontal"
+    android:background="#bfbfbf">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="10dp"
+
+
+       >
+
+        <LinearLayout
+
+
+            android:layout_width="10000dp"
+            android:layout_height="match_parent"
+
+
+            android:orientation="horizontal"
+
+            >
+
+            <ImageView
+
+                android:layout_width="107dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="20dp"
+
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+            <TextView
+
+                android:id="@+id/idNombreAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="Nombre"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+
+                />
+
+            <TextView
+                android:id="@+id/idApellidosPaternosAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Paternos"
+                android:textSize="20sp"
+
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/idApellidosMaternosAlumno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginLeft="10dp"
+                android:text="Maternos"
+                android:textSize="20sp"
+
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</LinearLayout>

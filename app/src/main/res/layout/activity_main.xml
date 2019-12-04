@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+     android:layout_height="match_parent"
+    >
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecyclerId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>-->
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +23,7 @@
     >
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ButtonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -20,55 +34,69 @@
         android:textAlignment="center"
         android:textColor="@color/fondo"
         android:textColorHint="@color/colorDark"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/PasswordLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/PasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin" />
+
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="315dp"
+        android:layout_height="196dp"
+        android:layout_marginTop="20dp"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher2_foreground" />
 
-
-
     <EditText
 
-        android:id="@+id/editText1"
 
-        android:layout_width="295dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
+        android:id="@+id/DniLogin"
+
+        android:layout_width="284dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="420dp"
 
         android:background="@drawable/border"
-        android:hint="@string/codigo_personal"
+        android:ems="10"
+        android:hint="DNI"
         android:inputType="textPersonName"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="0dp"
-        android:padding="10dp"
 
-        android:background="@drawable/border"
+    <EditText
+        android:id="@+id/PasswordLogin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginTop="32dp"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText1"
-        app:layout_constraintStart_toStartOf="@+id/editText1"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/DniLogin"
+        app:layout_constraintStart_toStartOf="@+id/DniLogin"
+        app:layout_constraintTop_toBottomOf="@+id/DniLogin" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/DniLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
