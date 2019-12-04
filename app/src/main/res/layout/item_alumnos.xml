@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
   android:orientation="horizontal"
-    android:background="#bfbfbf">
+    android:background="#bfbfbf"
+    android:id="@+id/item_concat">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
