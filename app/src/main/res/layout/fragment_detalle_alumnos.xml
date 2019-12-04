@@ -194,7 +194,7 @@
                                 android:layout_marginRight="10dp"
 
                                 android:gravity="right"
-                                android:src="@drawable/ic_grado2" />
+                                android:src="@drawable/ic_numero" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -255,28 +255,38 @@
                             <TextView
                                 android:layout_width="wrap_content"
 
+
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
+
 
                                 android:gravity="center"
                                 android:text="Correo Padres:"
                                 android:textSize="23sp"
                                 android:textStyle="bold" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    android:id="@+id/idCorreo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="left"
+                                    android:layout_marginRight="30dp"
+                                    android:text="jose.benitez@tecsup.edu.pe"
 
 
-                            <TextView
-                                android:id="@+id/idCorreo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal"
-                                android:text="jose.benitez@tecsup.edu.pe"
+                                    android:textColor="#000000"
+                                    android:textSize="23sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
 
-                                android:textColor="#000000"
-                                android:textSize="23sp"
-                                android:textStyle="bold" />
 
                         </LinearLayout>
+
 
                     </LinearLayout>
 
@@ -291,7 +301,6 @@
                         <ImageView
                             android:layout_width="76dp"
                             android:layout_height="46dp"
-                            android:layout_marginRight="10dp"
 
                             android:gravity="right"
                             android:src="@drawable/ic_numero2" />
@@ -299,7 +308,8 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginBottom="20dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -308,7 +318,7 @@
                                 android:layout_marginLeft="10dp"
 
                                 android:gravity="center"
-                                android:text="Número Incidencias en clase:"
+                                android:text="Número Incidencias Clase:"
                                 android:textSize="23sp"
                                 android:textStyle="bold" />
 
