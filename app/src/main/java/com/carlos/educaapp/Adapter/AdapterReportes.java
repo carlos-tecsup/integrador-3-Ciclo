@@ -9,24 +9,30 @@ import android.widget.TextView;
 
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.Pojo.ReportesPojo;
+import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewHolderReportes> implements View.OnClickListener {
-    @NonNull
-        RecyclerView recyclerReportes;
-    ArrayList<ReportesPojo> listDatos;
+
+
+    private List<Incidencias> listaincidencias;
     private View.OnClickListener listener;
+    public AdapterReportes() {
+        this.listaincidencias =new ArrayList<>();
+    }
 
-
-    public AdapterReportes(ArrayList<ReportesPojo> listDatos) {
-            this.listDatos = listDatos;
+    public void setListaincidencias(List<Incidencias> listaincidencias) {
+        this.listaincidencias = listaincidencias;
     }
 
 
     @Override
     public ViewHolderReportes onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list,null,false);
+
         view.setOnClickListener(this);
         return new ViewHolderReportes(view);
 
@@ -34,10 +40,9 @@ public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderReportes holder, int position) {
-
-         holder.Codigo.setText(String.valueOf(listDatos.get(position).getId()));
-        holder.fecha.setText(listDatos.get(position).getFecha());
-        holder.hora.setText(listDatos.get(position).getHora());
+        Incidencias incidencias = this.listaincidencias.get(position);
+         holder.Codigo.setText(String.valueOf(listaincidencias.get(position).getId()));
+        holder.hora.setText(listaincidencias.get(position).getFechaCreacion());
 
 
 
@@ -45,7 +50,7 @@ public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewH
 
     @Override
     public int getItemCount() {
-        return listDatos.size();
+        return listaincidencias.size();
     }
     public void setOnClickListener(View.OnClickListener listener){
         this.listener=listener;
@@ -66,7 +71,6 @@ public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewH
             super(itemView);
             hora=itemView.findViewById(R.id.idHoraIncidencia);
             Codigo=itemView.findViewById(R.id.idReporte);
-            fecha=itemView.findViewById(R.id.idFechaIncidencia);
 
 
         }

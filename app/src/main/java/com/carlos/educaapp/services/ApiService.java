@@ -2,6 +2,8 @@ package com.carlos.educaapp.services;
 
 import com.carlos.educaapp.models.Alumnos;
 import com.carlos.educaapp.models.AlumnosAtributos;
+import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
 import com.carlos.educaapp.models.Usuario;
 import com.carlos.educaapp.retrofit.ResponseLogin;
 
@@ -29,6 +31,9 @@ public interface ApiService {
 
     Call<List<Alumnos>> findAll();
 
+
+    @GET("/api/v1/user/reportes")
+    Call<List<Incidencias>> getIncidencias();
 
 
 }

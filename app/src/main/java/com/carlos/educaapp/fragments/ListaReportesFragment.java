@@ -3,8 +3,10 @@ package com.carlos.educaapp.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,19 +15,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.carlos.educaapp.Activities.NuevaIncidencia;
+import com.carlos.educaapp.Adapter.AdapterAlumnos;
 import com.carlos.educaapp.Adapter.AdapterReportes;
 import com.carlos.educaapp.HeaderDialogFragment;
 import com.carlos.educaapp.interfaces.IComunicaFragments;
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.Pojo.ReportesPojo;
+import com.carlos.educaapp.models.Alumnos;
+import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
+import com.carlos.educaapp.services.ApiService;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.carlos.educaapp.services.ApiService.API_BASE_URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,14 +61,13 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String TAG=ListaReportesFragment.class.getSimpleName();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
     RecyclerView recyclerReportes;
-    ArrayList<ReportesPojo> listaIncidencias;
     Activity activity;
     IComunicaFragments interfaceComunicaFragments;
 
@@ -103,31 +123,63 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
         final FloatingActionButton fab = (FloatingActionButton) vista.findViewById(R.id.añadir);
         fab.setOnClickListener(this);
 
-        listaIncidencias=new ArrayList<>();
+
         recyclerReportes=(RecyclerView)vista.findViewById(R.id.RecyclerId);
         recyclerReportes.setLayoutManager(new LinearLayoutManager(getContext()));
-        llenarLista();
-        AdapterReportes adapter=new AdapterReportes(listaIncidencias);
+
+        AdapterReportes adapter=new AdapterReportes();
         recyclerReportes.setAdapter(adapter);
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
-                interfaceComunicaFragments.enviarIncidencia(listaIncidencias.get(recyclerReportes.getChildAdapterPosition(view)));*/
+               /* interfaceComunicaFragments.enviarIncidencia(listaIncidencias.get(recyclerReportes.getChildAdapterPosition(view)));*/
             }
         });
-
+        testRest();
         return vista;
     }
 
-    private void llenarLista() {
-        listaIncidencias.add(new ReportesPojo(6,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Carlos","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
-        listaIncidencias.add(new ReportesPojo(5,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Jose","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
-        listaIncidencias.add(new ReportesPojo(4,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Juan","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
-        listaIncidencias.add(new ReportesPojo(3,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Andres","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
-        listaIncidencias.add(new ReportesPojo(2,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Dante","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
-        listaIncidencias.add(new ReportesPojo(1,"06:23","12-02-13","Salon1","Agresion Fisica","4","C","Carlos","Huaynates","Soto","El alumnso repite el mismo comportamiento"));
+    private void testRest() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        final String token = sp.getString("token", "usuario");
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest  = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer " + token)
+                    .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+            .client(client)
+            .baseUrl(API_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+        ApiService service = retrofit.create(ApiService.class);
+        Call<List<Incidencias>> call=service.getIncidencias();
+        call.enqueue(new Callback<List<Incidencias>>() {
+            @Override
+            public void onResponse(Call<List<Incidencias>> call, Response<List<Incidencias>> response) {
+                if(response.isSuccessful()){
+                    List<Incidencias> incidencias=response.body();
+                    Log.d("Activity","alumnos"+incidencias);
+                    AdapterReportes adapter=(AdapterReportes) recyclerReportes.getAdapter();
+                    adapter.setListaincidencias(incidencias);
+                    adapter.notifyDataSetChanged();
+                }else {
+                    Toast.makeText(getContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Incidencias>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error crítico: "+t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -137,7 +189,7 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
         }
     }
 
-  /*  @Override
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
@@ -150,13 +202,13 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
             throw new RuntimeException(context.toString()
                 + " must implement OnFragmentInteractionListener");
         }
-    }*/
+    }
 
-   /* @Override
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }*/
+    }
 
     @Override
     public void onClick(View view) {

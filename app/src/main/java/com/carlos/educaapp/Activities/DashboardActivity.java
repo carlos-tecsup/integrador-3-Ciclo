@@ -31,7 +31,7 @@ import com.carlos.educaapp.interfaces.IComunicaFragmentsAlumnos;
 import com.carlos.educaapp.profile.Perfil;
 import com.carlos.educaapp.profile.ProfileFragment;
 
-public class DashboardActivity extends AppCompatActivity implements DetalleAlumnosFragment.OnFragmentInteractionListener, ListaAlumnosFragment.OnFragmentInteractionListener, ListaReportesFragment.OnFragmentInteractionListener, DetalleIncidenciaFragment.OnFragmentInteractionListener {
+public class DashboardActivity extends AppCompatActivity implements IComunicaFragments,DetalleAlumnosFragment.OnFragmentInteractionListener, ListaAlumnosFragment.OnFragmentInteractionListener, ListaReportesFragment.OnFragmentInteractionListener, DetalleIncidenciaFragment.OnFragmentInteractionListener {
 
     ListaAlumnosFragment listaFragment;
     ListaReportesFragment listaReportesFragment;
@@ -123,13 +123,5 @@ BottomNavigationView mbottomNavigationView;
 
 
 
-    public void enviarAlumnos(AlumnosPojo alumnos) {
-        detalleAlumnosFragment=new DetalleAlumnosFragment();
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("objeto2",alumnos);
-        detalleAlumnosFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,detalleAlumnosFragment).addToBackStack(null).commit();
 
-
-    }
 }

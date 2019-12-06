@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +22,18 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class AdapterIncidencias extends RecyclerView.Adapter<AdapterIncidencias.ViewHolder> implements View.OnClickListener{
     @NonNull
-    private List<Incidencia> incidencias;
+    private List<Incidencias> incidencias;
     private View.OnClickListener listener;
     /*  return new ViewHolder(view);
 
      */
  /*   Dialog myDialog = new Dialog(this);*/
 
-    public void setIncidencias(@NonNull List<Incidencia> incidencias) {
+    public void setIncidencias(@NonNull List<Incidencias> incidencias) {
         this.incidencias = incidencias;
     }
     public AdapterIncidencias(){
-        incidencias=new  ArrayList<>();
+        this.incidencias=new  ArrayList<>();
 
     }
 
@@ -49,10 +50,10 @@ public class AdapterIncidencias extends RecyclerView.Adapter<AdapterIncidencias.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Incidencia incidencia=this.incidencias.get(position);
-        viewHolder.Codigo.setText(String.valueOf(incidencia.getId()));
-        viewHolder.fecha.setText(incidencia.getFecha());
-        viewHolder.hora.setText(incidencia.getHora());
+        Incidencias incidencia=this.incidencias.get(position);
+       /* viewHolder.Codigo.setText(String.valueOf(incidencia.getId()));
+        viewHolder.fecha.setText(incidencia.getFecaCreacion());
+        viewHolder.hora.setText(incidencia.getHora());*/
 
 
 
