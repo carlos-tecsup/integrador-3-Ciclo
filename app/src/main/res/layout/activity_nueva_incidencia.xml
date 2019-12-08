@@ -20,8 +20,7 @@
             android:orientation="vertical">
 
 
-
-    <LinearLayout
+            <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -75,10 +74,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    >
 
 
                     <Button
+                        android:textAllCaps="false"
+                        android:textSize="17sp"
 
                         android:id="@+id/buttonfecha"
                         android:layout_width="wrap_content"
@@ -98,6 +100,7 @@
 
 
                         <EditText
+
                             android:id="@+id/editTextHora"
                             android:layout_width="153dp"
                             android:layout_height="wrap_content"
@@ -131,6 +134,8 @@
 
 
                     <Button
+                        android:textAllCaps="false"
+                        android:textSize="17sp"
                         android:id="@+id/buttonhora"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -290,16 +295,19 @@
 
 
             <Button
+                android:textAllCaps="false"
                 android:id="@+id/btnAlumnosInvolucrados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:padding="13dp"
+                android:padding="8dp"
                 android:layout_marginLeft="23dp"
+                android:textSize="19sp"
                 android:text="Alumnos Involucrados"
                 android:textColor="@color/fondo"
                 android:background="@color/colorPrimary"
                 />
+
 
             <TextView
                 android:id="@+id/textAlumnosInvolucrados"
@@ -310,17 +318,19 @@
 
                 android:textSize="20dp" />
             <TextView
-                android:textStyle="bold"
-                android:id="@+id/Descripcion"
                 android:text="Descripción"
+                android:layout_marginTop="20dp"
                 android:textSize="22sp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:textStyle="bold"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal" />
+
             <EditText
+
                 android:id="@+id/DescripcionIncidencia"
-                android:textSize="18dp"
+                android:textSize="22sp"
                 android:textStyle="bold"
 
                 android:layout_width="match_parent"
@@ -328,6 +338,7 @@
                 android:gravity="center_horizontal" />
 
             <Button
+                android:layout_marginTop="26dp"
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

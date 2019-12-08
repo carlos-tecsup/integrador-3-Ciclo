@@ -24,6 +24,7 @@ import com.carlos.educaapp.Pojo.AlumnosPojo;
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.interfaces.IComunicaFragmentsAlumnos;
 import com.carlos.educaapp.models.Alumnos;
+import com.carlos.educaapp.models.AlumnosInvolucrado;
 import com.carlos.educaapp.services.ApiService;
 import com.carlos.educaapp.services.ApiServiceGenerator;
 
@@ -151,7 +152,7 @@ public class ListaAlumnosFragment extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* interfaceComunicaFragmentsAlumnos.enviarAlumnos(listaAlumnos.get(recyclerAlumno.getChildAdapterPosition(view)));*/
+           /*    interfaceComunicaFragmentsAlumnos.enviarAlumnos(listaAlumnos.get(recyclerAlumno.getChildAdapterPosition(view)));*/
              }
         });
         testRest();

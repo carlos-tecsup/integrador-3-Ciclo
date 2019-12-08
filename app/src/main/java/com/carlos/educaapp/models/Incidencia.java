@@ -37,66 +37,6 @@ public class Incidencia {
         Descripcion = descripcion;
     }
 
-    public String getDescripcion() {
-        return Descripcion;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getHora() {
-        return Hora;
-    }
-
-    public String getFecha() {
-        return Fecha;
-    }
-
-    public String getLugar() {
-        return Lugar;
-    }
-
-    public String getTipo() {
-        return Tipo;
-    }
-
-    public String getGrado() {
-        return Grado;
-    }
-
-    public String getSeccion() {
-        return Seccion;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public String getApellidoPaterno() {
-        return ApellidoPaterno;
-    }
-
-    public String getApellidoMaterno() {
-        return ApellidoMaterno;
-    }
-
-    @Override
-    public String toString() {
-        return "Incidencia{" +
-            "id=" + id +
-            ", Hora='" + Hora + '\'' +
-            ", Fecha='" + Fecha + '\'' +
-            ", Lugar='" + Lugar + '\'' +
-            ", Tipo='" + Tipo + '\'' +
-            ", Grado='" + Grado + '\'' +
-            ", Seccion='" + Seccion + '\'' +
-            ", Nombre='" + Nombre + '\'' +
-            ", ApellidoPaterno='" + ApellidoPaterno + '\'' +
-            ", ApellidoMaterno='" + ApellidoMaterno + '\'' +
-            ", Descripcion='" + Descripcion + '\'' +
-            '}';
-    }
 }
 
 

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +30,7 @@ import com.carlos.educaapp.interfaces.IComunicaFragments;
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.Pojo.ReportesPojo;
 import com.carlos.educaapp.models.Alumnos;
+import com.carlos.educaapp.models.AlumnosInvolucrado;
 import com.carlos.educaapp.models.Incidencia;
 import com.carlos.educaapp.models.Incidencias;
 import com.carlos.educaapp.services.ApiService;
@@ -61,15 +63,17 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String TAG=ListaReportesFragment.class.getSimpleName();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    List<Incidencias> listaincidencias;
     private OnFragmentInteractionListener mListener;
+
+
     RecyclerView recyclerReportes;
     Activity activity;
     IComunicaFragments interfaceComunicaFragments;
+
 
 
 
@@ -132,7 +136,8 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* interfaceComunicaFragments.enviarIncidencia(listaIncidencias.get(recyclerReportes.getChildAdapterPosition(view)));*/
+
+               /* interfaceComunicaFragments.enviarIncidencia(listaincidencias.get(recyclerReportes.getChildAdapterPosition(view)));*/
             }
         });
         testRest();
@@ -165,6 +170,7 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
                     List<Incidencias> incidencias=response.body();
                     Log.d("Activity","alumnos"+incidencias);
                     AdapterReportes adapter=(AdapterReportes) recyclerReportes.getAdapter();
+
                     adapter.setListaincidencias(incidencias);
                     adapter.notifyDataSetChanged();
                 }else {
@@ -188,13 +194,13 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
             mListener.onFragmentInteraction(uri);
         }
     }
-
+/*
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
-            this.activity= (Activity) context;
-            interfaceComunicaFragments=(IComunicaFragments)this.activity;
+          *//*  this.activity= (Activity) context;
+            interfaceComunicaFragments=(IComunicaFragments)this.activity;*//*
         }
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -208,7 +214,7 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
+    }*/
 
     @Override
     public void onClick(View view) {

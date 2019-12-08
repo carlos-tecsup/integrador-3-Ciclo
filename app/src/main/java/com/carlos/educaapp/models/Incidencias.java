@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Incidencias {
 
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -36,7 +37,8 @@ public class Incidencias {
     private String seccion;
     @SerializedName("alumnos_involucrados")
     @Expose
-    private List<AlumnosInvolucrado> alumnosInvolucrados ;
+    private List<AlumnosInvolucrado> alumnosInvolucrados;
+
 
     public Integer getId() {
         return id;
@@ -117,20 +119,7 @@ public class Incidencias {
     public void setAlumnosInvolucrados(List<AlumnosInvolucrado> alumnosInvolucrados) {
         this.alumnosInvolucrados = alumnosInvolucrados;
     }
-
-    @Override
-    public String toString() {
-        return "Incidencias{" +
-            "id=" + id +
-            ", fechaCreacion='" + fechaCreacion + '\'' +
-            ", observacion='" + observacion + '\'' +
-            ", profesorNombre='" + profesorNombre + '\'' +
-            ", profesorApellido='" + profesorApellido + '\'' +
-            ", falta='" + falta + '\'' +
-            ", lugar='" + lugar + '\'' +
-            ", grado='" + grado + '\'' +
-            ", seccion='" + seccion + '\'' +
-            ", alumnosInvolucrados=" + alumnosInvolucrados +
-            '}';
-    }
 }
+
+
+

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.carlos.educaapp.Pojo.AlumnosPojo;
 import com.carlos.educaapp.R;
 import com.carlos.educaapp.models.Alumnos;
+import com.carlos.educaapp.models.AlumnosInvolucrado;
 
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.ViewHolderAlumnos> implements View.OnClickListener {
     private List<Alumnos>  listaAlumnos;
+
     @NonNull
     Dialog myDialog;
 
@@ -57,6 +59,7 @@ public class AdapterAlumnos extends RecyclerView.Adapter<AdapterAlumnos.ViewHold
         vHolder.item_contact.setOnClickListener(new View.OnClickListener() {
 
            public void onClick(View view) {
+
                TextView seccion=(TextView)myDialog.findViewById(R.id.idSeccionAlumno);
                TextView grado_text=(TextView)myDialog.findViewById(R.id.idGrado);
                TextView correo=(TextView)myDialog.findViewById(R.id.idCorreo);

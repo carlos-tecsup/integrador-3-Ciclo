@@ -1,16 +1,23 @@
+
 package com.carlos.educaapp.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Lugar {
+public class TipoIncidencia {
 
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("nombre")
+    @Expose
+    private String nombre;
+    @SerializedName("clasificacion")
+    @Expose
+    private Object clasificacion;
     @SerializedName("descripcion")
     @Expose
-    private String descripcion;
+    private Object descripcion;
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
@@ -21,7 +28,7 @@ public class Lugar {
     @Expose
     private Object updatedAt;
 
-    public Integer getId() {
+    public Integer getId()   {
         return id;
     }
 
@@ -29,11 +36,27 @@ public class Lugar {
         this.id = id;
     }
 
-    public String getDescripcion() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Object getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(Object clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public Object getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(Object descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -63,9 +86,11 @@ public class Lugar {
 
     @Override
     public String toString() {
-        return "Lugar{" +
+        return "TipoIncidencia{" +
             "id=" + id +
-            ", descripcion='" + descripcion + '\'' +
+            ", nombre='" + nombre + '\'' +
+            ", clasificacion=" + clasificacion +
+            ", descripcion=" + descripcion +
             ", deletedAt=" + deletedAt +
             ", createdAt=" + createdAt +
             ", updatedAt=" + updatedAt +

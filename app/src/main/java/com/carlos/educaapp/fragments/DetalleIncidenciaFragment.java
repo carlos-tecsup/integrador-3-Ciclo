@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.carlos.educaapp.Activities.DashboardActivity;
 import com.carlos.educaapp.Pojo.ReportesPojo;
 import com.carlos.educaapp.R;
+import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,20 +110,13 @@ public class DetalleIncidenciaFragment extends Fragment {
 
 
         Bundle objetoincidencia=getArguments();
-        ReportesPojo reportes=null;
+        Incidencias incidencias=null;
         if (objetoincidencia!=null){
-            reportes=(ReportesPojo)objetoincidencia.getSerializable("objeto");
-            textNombre.setText(reportes.getNombre());
-            textApellidoMaterno.setText(reportes.getApellidoMaterno());
-            textApellidoPaterno.setText(reportes.getApellidoPaterno());
-            textDescripcion.setText(reportes.getDescripcion());
-            textLugar.setText(reportes.getLugar());
-            textTipo.setText(reportes.getTipo());
-            textSeccion.setText(reportes.getSeccion());
-            textGrado.setText(reportes.getGrado());
-            textFecha.setText(reportes.getFecha());
-            textHora.setText(reportes.getHora());
-
+            incidencias=(Incidencias) objetoincidencia.getSerializable("objeto");
+            textNombre.setText(incidencias.getObservacion());
+            textApellidoMaterno.setText(incidencias.getLugar());
+            textApellidoPaterno.setText(incidencias.getFalta());
+            textDescripcion.setText(incidencias.getGrado());
 
         }
         return vista;

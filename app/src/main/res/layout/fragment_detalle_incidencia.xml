@@ -60,14 +60,15 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:textColor="#000000"
-                        android:id="@+id/idHora"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/idHoraReporte"
+                        android:layout_width="66dp"
+
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-
                         android:layout_marginLeft="13dp"
-                        android:text="Hora"
+
+                        android:text="09:19"
+                        android:textColor="#000000"
                         android:textSize="22sp"
                         android:textStyle="bold" />
 
@@ -106,13 +107,13 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/idFecha"
+                        android:id="@+id/idFechaReporte"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="13dp"
 
-                        android:text="Fecha"
+                        android:text="11-05-2019"
                         android:textColor="#000000"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -155,13 +156,13 @@
                             >
 
                             <TextView
-                                android:textColor="#000000"
-                                android:id="@+id/idNombre"
+                                android:id="@+id/idNombreAlumnoReporte"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="15dp"
-                                android:text="Nombre"
+                                android:text="Luis"
+                                android:textColor="#000000"
                                 android:textSize="22sp"
                                 android:textStyle="bold"
 
@@ -169,32 +170,6 @@
                                 />
 
 
-                            <TextView
-                                android:textColor="#000000"
-                                android:id="@+id/idApellidosPaternos"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-
-                                android:layout_marginLeft="8dp"
-                                android:text="Paternos"
-                                android:textSize="22sp"
-
-
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:textColor="#000000"
-                                android:id="@+id/idApellidosMaternos"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_marginLeft="8dp"
-                                android:text="Maternos"
-                                android:textSize="22sp"
-
-
-                                android:textStyle="bold" />
                         </LinearLayout>
 
 
@@ -237,12 +212,12 @@
                             <TextView
                                 android:textColor="#000000"
 
-                                android:id="@+id/idTipo"
+                                android:id="@+id/idTipoReporte"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
 
                                 android:layout_marginLeft="12dp"
-                                android:text="Tipo"
+                                android:text="Acoso"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -277,13 +252,13 @@
 
                             <TextView
                                 android:textColor="#000000"
-                                android:id="@+id/idLugar"
+                                android:id="@+id/idLugarReporte"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="12dp"
 
                                 android:gravity="center"
-                                android:text="Lugar"
+                                android:text="Salon1"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -317,13 +292,13 @@
 
                             <TextView
                                 android:textColor="#000000"
-                                android:id="@+id/idGrado"
+                                android:id="@+id/idGradoReporte"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
 
                                 android:layout_marginLeft="12dp"
-                                android:text="Grado"
+                                android:text="5 Secundaria"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
 
@@ -355,14 +330,14 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:textColor="#000000"
-                                android:id="@+id/idSeccion"
+                                android:id="@+id/idSeccionReporte"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="12dp"
-
                                 android:gravity="center"
-                                android:text="Seccin"
+
+                                android:text="C"
+                                android:textColor="#000000"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -413,7 +388,7 @@
 
 
 
-                                android:text="Descripcion"
+                                android:text="El alumno agredió a golpes a su compañero"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
                             </LinearLayout>

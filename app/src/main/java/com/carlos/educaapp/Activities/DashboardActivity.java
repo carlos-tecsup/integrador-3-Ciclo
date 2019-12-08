@@ -28,10 +28,14 @@ import com.carlos.educaapp.fragments.ListaReportesFragment;
 import com.carlos.educaapp.fragments.MonitoreoFragment;
 import com.carlos.educaapp.interfaces.IComunicaFragments;
 import com.carlos.educaapp.interfaces.IComunicaFragmentsAlumnos;
+import com.carlos.educaapp.models.Incidencia;
+import com.carlos.educaapp.models.Incidencias;
 import com.carlos.educaapp.profile.Perfil;
 import com.carlos.educaapp.profile.ProfileFragment;
 
-public class DashboardActivity extends AppCompatActivity implements IComunicaFragments,DetalleAlumnosFragment.OnFragmentInteractionListener, ListaAlumnosFragment.OnFragmentInteractionListener, ListaReportesFragment.OnFragmentInteractionListener, DetalleIncidenciaFragment.OnFragmentInteractionListener {
+import java.io.Serializable;
+
+public class DashboardActivity extends AppCompatActivity implements DetalleAlumnosFragment.OnFragmentInteractionListener, ListaAlumnosFragment.OnFragmentInteractionListener, ListaReportesFragment.OnFragmentInteractionListener, DetalleIncidenciaFragment.OnFragmentInteractionListener {
 
     ListaAlumnosFragment listaFragment;
     ListaReportesFragment listaReportesFragment;
@@ -113,10 +117,10 @@ BottomNavigationView mbottomNavigationView;
 
 
 
-    public void enviarIncidencia(ReportesPojo reporte) {
+    public void enviarIncidencia(Incidencias incidencias) {
         detalleFragment=new DetalleIncidenciaFragment();
         Bundle bundle=new Bundle();
-        bundle.putSerializable("objeto",reporte);
+        bundle.putSerializable("objeto", (Serializable) incidencias);
         detalleFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,detalleFragment).addToBackStack(null).commit();
     }

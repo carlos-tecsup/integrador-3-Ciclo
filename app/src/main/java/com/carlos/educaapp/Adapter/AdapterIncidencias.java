@@ -72,6 +72,7 @@ public class AdapterIncidencias extends RecyclerView.Adapter<AdapterIncidencias.
             listener.onClick(view);
         }
 
+
     }
     public void setOnClickListener(View.OnClickListener listener){
         this.listener=listener;
