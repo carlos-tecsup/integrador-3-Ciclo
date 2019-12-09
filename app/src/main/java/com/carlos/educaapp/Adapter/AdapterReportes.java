@@ -91,7 +91,7 @@ public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewH
                     for (Incidencias r: listaincidencias) {
 
                         list2.add(r.getAlumnosInvolucrados().toString().replaceAll("AlumnosInvolucrado", "").replaceAll("nombreAlumno","").replaceAll("\\=","")
-                            .replaceAll("\\[","").replaceAll("\\]","").replaceAll("\\}","").replaceAll("\\{","").replaceAll("\\'",""));
+                            .replaceAll("\\[","").replaceAll("\\]","").replaceAll("\\}","").replaceAll("\\{","").replaceAll("\\'","").replaceAll("apePaterno","").replaceAll("\\,",""));
 
 
                     }

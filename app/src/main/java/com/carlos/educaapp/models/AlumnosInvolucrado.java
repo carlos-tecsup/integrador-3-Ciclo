@@ -5,21 +5,20 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AlumnosInvolucrado {
-/*
-    @SerializedName("id_alumno")
+/*    @SerializedName("id_alumno")
     @Expose
     private Integer idAlumno;*/
     @SerializedName("nombre_alumno")
     @Expose
     private String nombreAlumno;
-/*    @SerializedName("ape_paterno")
+    @SerializedName("ape_paterno")
     @Expose
     private String apePaterno;
-    @SerializedName("ape_materno")
+  /*  @SerializedName("ape_materno")
     @Expose
-    private String apeMaterno;*/
-
-  /*  public Integer getIdAlumno() {
+    private String apeMaterno;
+*/
+    /*public Integer getIdAlumno() {
         return idAlumno;
     }
 
@@ -34,7 +33,6 @@ public class AlumnosInvolucrado {
     public void setNombreAlumno(String nombreAlumno) {
         this.nombreAlumno = nombreAlumno;
     }
-/*
     public String getApePaterno() {
         return apePaterno;
     }
@@ -43,28 +41,19 @@ public class AlumnosInvolucrado {
         this.apePaterno = apePaterno;
     }
 
-    public String getApeMaterno() {
+/*    public String getApeMaterno() {
         return apeMaterno;
     }
 
     public void setApeMaterno(String apeMaterno) {
         this.apeMaterno = apeMaterno;
-    }
-
-    @Override
-    public String toString() {
-        return "AlumnosInvolucrado{" +
-            "idAlumno=" + idAlumno +
-            ", nombreAlumno='" + nombreAlumno + '\'' +
-            ", apePaterno='" + apePaterno + '\'' +
-            ", apeMaterno='" + apeMaterno + '\'' +
-            '}';
     }*/
 
     @Override
     public String toString() {
         return "AlumnosInvolucrado{" +
             "nombreAlumno='" + nombreAlumno + '\'' +
+            ", apePaterno='" + apePaterno + '\'' +
             '}';
     }
 }
