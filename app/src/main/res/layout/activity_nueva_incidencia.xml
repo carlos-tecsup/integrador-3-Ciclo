@@ -165,6 +165,13 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+
+                        android:text="TextView" />
+
 
                 </LinearLayout>
 

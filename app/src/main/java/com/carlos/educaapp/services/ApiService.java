@@ -1,23 +1,18 @@
 package com.carlos.educaapp.services;
 
 import com.carlos.educaapp.models.Alumnos;
-import com.carlos.educaapp.models.AlumnosAtributos;
-import com.carlos.educaapp.models.Incidencia;
 import com.carlos.educaapp.models.Incidencias;
 import com.carlos.educaapp.models.Lugar;
+import com.carlos.educaapp.models.Seccion;
 import com.carlos.educaapp.models.TipoIncidencia;
-import com.carlos.educaapp.models.Usuario;
 import com.carlos.educaapp.retrofit.ResponseLogin;
 
-import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -42,6 +37,11 @@ public interface ApiService {
     Call<List<TipoIncidencia>> getTipoIncidencia();
     @GET("/api/v1/lugares")
     Call<List<Lugar>> getLugar();
+
+    @GET("/api/v1/salones")
+    Call<List<Seccion>> getSeccion();
+
+
 
 
 

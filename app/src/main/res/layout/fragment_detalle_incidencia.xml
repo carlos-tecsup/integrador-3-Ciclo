@@ -38,42 +38,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
 
-                    >
-
-                <ImageView
-
-                        android:layout_width="76dp"
-                        android:layout_height="37dp"
-                        android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/ic_reloj" />
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-
-                        android:layout_marginLeft="5dp"
-                        android:text="Hora:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/idHoraReporte"
-                        android:layout_width="66dp"
-
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="13dp"
-
-                        android:text="09:19"
-                        android:textColor="#000000"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
+                    />
 
                 <LinearLayout
 
@@ -157,10 +122,12 @@
 
                             <TextView
                                 android:id="@+id/idNombreAlumnoReporte"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_width="226dp"
+                                android:layout_height="wrap_content"
+
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="15dp"
+
                                 android:text="Luis"
                                 android:textColor="#000000"
                                 android:textSize="22sp"

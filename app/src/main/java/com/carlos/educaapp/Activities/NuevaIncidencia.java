@@ -38,10 +38,14 @@ import com.orm.query.Select;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -56,7 +60,7 @@ import static com.carlos.educaapp.services.ApiService.API_BASE_URL;
 
 public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickListener {
     Button bfecha,bhora;
-    EditText efecha,ehora,elugar,descripcion;
+    public EditText efecha,ehora,elugar,descripcion;
     int dia,mes,ano,hora,minutos ;
     Spinner spinnerlugar;
     Button mBtn;
@@ -67,7 +71,7 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
     Spinner spinnerTipo;
     Spinner spinnerGrado;
     Spinner spinnerSección;
-
+    public  TextView concatenado;
 
 
 
@@ -93,7 +97,12 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_nueva_incidencia);
         getSupportActionBar().setTitle("NUEVA INCIDENCIA");
     /*    Toolbar toolbar=findViewById(R.id.toolbarnuevaincidencia);
+
         setSupportActionBar(toolbar);*/
+
+
+        concatenado=(TextView)findViewById(R.id.textView);
+
 
         btnLogin=(Button)findViewById(R.id.button2);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -106,20 +115,21 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
             }
 
         });
+
+        obtenerDatosTipo();
+        obtenerDatosLugar();
+
+        spinnerTipo=(Spinner)findViewById(R.id.SpinnerTipo);
         spinnerlugar=(Spinner)findViewById(R.id.SpinnerLugar);
         ArrayList<String> incidenciaslugar=new ArrayList<String>();
 
-        incidenciaslugar.add("Acoso");
-        incidenciaslugar.add("Robo");
-        incidenciaslugar.add("Agresión");
-        incidenciaslugar.add("Falta de Respeto");
         ArrayAdapter<CharSequence> adapterlugar=new ArrayAdapter(this,R.layout.spinner_item,incidenciaslugar );
         spinnerlugar.setAdapter(adapterlugar);
         spinnerlugar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                /* if ()*/
+
             }
 
             @Override
@@ -128,20 +138,9 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        spinnerlugar=(Spinner)findViewById(R.id.SpinnerSeccion);
 
 
-        obtenerDatosTipo();
-        obtenerDatosLugar();
-        spinnerlugar=(Spinner)findViewById(R.id.SpinnerGrado);
-
-
-        spinnerTipo=(Spinner)findViewById(R.id.SpinnerTipo);
         ArrayList<String> incidencias=new ArrayList<String>();
-        incidencias.add("Acoso");
-        incidencias.add("Robo");
-
-
 
         ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,incidencias );
         spinnerTipo.setAdapter(adapter);
@@ -235,20 +234,11 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
 
 
 
-     /*   List<Incidencia> incidencias;
-        finish();
-*/
-      /*  incidencias=Select.from(Incidencia.class)
-            .where("id")
-            .orderBy("ID desc")
-            .list();*/
-    /*    spinnerlugar.setAdapter(new ArrayAdapter<String>(this,R.layout.));*/
-
-
-
     }
 
+
     private void obtenerDatosLugar() {
+
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         final String token = sp.getString("token", "usuario");
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -299,6 +289,11 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
 
     }
 
+
+
+
+
+
     private void poblarSpinnerLugar(List<Lugar> lugar) {
         List<String> list=new ArrayList<String>();
         for (Lugar r: lugar){
@@ -307,7 +302,7 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         }
 
         ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,list );
-        spinnerTipo.setAdapter(adapter);
+        spinnerlugar.setAdapter(adapter);
 
     }
 
@@ -342,11 +337,6 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
                                 poblarSpinnerTipo(tipo);
 
 
-
-
-
-
-
                             }
                             else {
                                 Toast.makeText(getApplicationContext(),"ads,", Toast.LENGTH_LONG).show();
@@ -370,7 +360,6 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         List<String> list=new ArrayList<String>();
         for (TipoIncidencia r: tipo){
             list.add(r.getNombre());
-
         }
 
         ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,list );
@@ -378,12 +367,6 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
 
     }
 
-  /*  private void poblarSpinnerTipo(TipoIncidencia incidencia) {
-        List<TipoIncidencia> tipo= new ArrayList<>();
-
-        ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,tipo );
-        spinnerTipo.setAdapter(adapter);
-    }*/
 
     @Override
     public void onClick(View v) {
@@ -401,10 +384,19 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
                 }
             }
                 ,ano,mes,dia);
+
+
+
+
             datePickerDialog.show();
 
+        }
+        else {
 
-
+            String fechas=String.valueOf(efecha.getText());
+            String horas= String.valueOf(ehora.getText());
+            String adios=fechas+horas;
+            concatenado.setText(adios);
         }
         if (v==bhora){
             final Calendar c=Calendar.getInstance();
@@ -418,6 +410,26 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
                 }
             },hora,minutos,false);
                 timePickerDialog.show();
+
+
         }
+        else {
+
+            String fechas=String.valueOf(efecha.getText());
+            String horas= String.valueOf(ehora.getText());
+            String adios=fechas+" "+horas;
+            concatenado.setText(adios);
+
+        }
+
+
+
     }
+
+
+
+
+
+
+
 }

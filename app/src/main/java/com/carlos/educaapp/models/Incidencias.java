@@ -119,6 +119,22 @@ public class Incidencias {
     public void setAlumnosInvolucrados(List<AlumnosInvolucrado> alumnosInvolucrados) {
         this.alumnosInvolucrados = alumnosInvolucrados;
     }
+
+    @Override
+    public String toString() {
+        return "Incidencias{" +
+            "id=" + id +
+            ", fechaCreacion='" + fechaCreacion + '\'' +
+            ", observacion='" + observacion + '\'' +
+            ", profesorNombre='" + profesorNombre + '\'' +
+            ", profesorApellido='" + profesorApellido + '\'' +
+            ", falta='" + falta + '\'' +
+            ", lugar='" + lugar + '\'' +
+            ", grado='" + grado + '\'' +
+            ", seccion='" + seccion + '\'' +
+            ", alumnosInvolucrados=" + alumnosInvolucrados +
+            '}';
+    }
 }
 
 

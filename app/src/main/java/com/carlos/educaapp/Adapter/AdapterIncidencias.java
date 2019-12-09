@@ -89,7 +89,7 @@ public class AdapterIncidencias extends RecyclerView.Adapter<AdapterIncidencias.
             item_incidencia=(LinearLayout) itemView.findViewById(R.id.VistaReporte);
             hora=itemView.findViewById(R.id.idHoraIncidencia);
             Codigo=itemView.findViewById(R.id.idReporte);
-            fecha=itemView.findViewById(R.id.idFechaIncidencia);
+
         }
 
     }

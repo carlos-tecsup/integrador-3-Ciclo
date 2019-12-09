@@ -168,7 +168,7 @@ public class ListaReportesFragment extends Fragment implements View.OnClickListe
             public void onResponse(Call<List<Incidencias>> call, Response<List<Incidencias>> response) {
                 if(response.isSuccessful()){
                     List<Incidencias> incidencias=response.body();
-                    Log.d("Activity","alumnos"+incidencias);
+                    Log.d("Activity","incidencias"+incidencias);
                     AdapterReportes adapter=(AdapterReportes) recyclerReportes.getAdapter();
 
                     adapter.setListaincidencias(incidencias);

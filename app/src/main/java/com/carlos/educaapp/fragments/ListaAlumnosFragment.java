@@ -30,6 +30,7 @@ import com.carlos.educaapp.services.ApiServiceGenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -189,10 +190,12 @@ public class ListaAlumnosFragment extends Fragment {
             public void onResponse(Call<List<Alumnos>> call, Response<List<Alumnos>> response) {
                 if(response.isSuccessful()){
                     List<Alumnos> alumnos=response.body();
+
                     Log.d("Activity","alumnos"+alumnos);
                     AdapterAlumnos adapter=(AdapterAlumnos)recyclerAlumno.getAdapter();
                     adapter.setListaAlumnos(alumnos);
                     adapter.notifyDataSetChanged();
+                   
                 }else {
                     Toast.makeText(getContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
                 }
