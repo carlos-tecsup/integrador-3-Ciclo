@@ -93,7 +93,7 @@
 
                 >
                 <LinearLayout
-                    android:layout_marginLeft="23dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -103,6 +103,7 @@
                     >
 
                     <TextView
+                        android:layout_marginLeft="10dp"
 
 
 
@@ -110,7 +111,7 @@
                         android:layout_height="wrap_content"
 
                         android:text="Grado:"
-                        android:textSize="25sp"
+                        android:textSize="20dp"
                        />
 
                 <TextView
@@ -121,7 +122,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="Reporte"
-                    android:textSize="25sp"
+                    android:textSize="20dp"
                />
                 </LinearLayout>
 
@@ -152,7 +153,7 @@
                             android:layout_height="wrap_content"
 
 
-                            android:textSize="25sp" />
+                            android:textSize="20dp" />
                     <TextView
 
                         android:text="ads"
@@ -162,7 +163,7 @@
                         android:layout_height="wrap_content"
 
 
-                        android:textSize="25sp"/>
+                        android:textSize="20dp"/>
                     </LinearLayout>
 
 

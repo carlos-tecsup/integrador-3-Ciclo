@@ -119,7 +119,6 @@ public class AdapterReportes  extends RecyclerView.Adapter<AdapterReportes.ViewH
                 Window window = myDialog.getWindow();
                 window.setLayout(Toolbar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
 
-                Toast.makeText(context,"Text Click"+String.valueOf(vHolder.getAdapterPosition()),Toast.LENGTH_SHORT).show();
             }
         });
                  return vHolder;

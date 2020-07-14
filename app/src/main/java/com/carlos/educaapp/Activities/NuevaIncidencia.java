@@ -31,7 +31,9 @@ import com.carlos.educaapp.models.Alumnos;
 import com.carlos.educaapp.models.Incidencia;
 import com.carlos.educaapp.models.Incidencias;
 import com.carlos.educaapp.models.Lugar;
+import com.carlos.educaapp.models.Seccion;
 import com.carlos.educaapp.models.TipoIncidencia;
+import com.carlos.educaapp.retrofit.ResponseLogin;
 import com.carlos.educaapp.services.ApiService;
 import com.google.gson.Gson;
 import com.orm.query.Select;
@@ -60,7 +62,7 @@ import static com.carlos.educaapp.services.ApiService.API_BASE_URL;
 
 public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickListener {
     Button bfecha,bhora;
-    public EditText efecha,ehora,elugar,descripcion;
+    EditText efecha,ehora,elugar,descripcion;
     int dia,mes,ano,hora,minutos ;
     Spinner spinnerlugar;
     Button mBtn;
@@ -70,8 +72,9 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
     Spinner spinnerLugar;
     Spinner spinnerTipo;
     Spinner spinnerGrado;
-    Spinner spinnerSección;
+    Spinner spinnerSeccion;
     public  TextView concatenado;
+    TextView texto;
 
 
 
@@ -108,19 +111,30 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent siguiente=new Intent(NuevaIncidencia.this,DashboardActivity.class);
                 startActivity(siguiente);
+              /*  Register();*/
 
 
             }
 
         });
 
+
         obtenerDatosTipo();
         obtenerDatosLugar();
+        obtenerSeccion();
 
         spinnerTipo=(Spinner)findViewById(R.id.SpinnerTipo);
         spinnerlugar=(Spinner)findViewById(R.id.SpinnerLugar);
+        spinnerGrado=(Spinner)findViewById(R.id.SpinnerGrado);
+        spinnerSeccion=(Spinner)findViewById(R.id.SpinnerSeccion);
+        /*TextView texto2=(TextView)findViewById(R.id.textView2);*/
+
+      /*  String spinnerText = ((TextView)spinnerGrado.findViewById(R.id.textView2)).getText().toString();*/
+
+
         ArrayList<String> incidenciaslugar=new ArrayList<String>();
 
         ArrayAdapter<CharSequence> adapterlugar=new ArrayAdapter(this,R.layout.spinner_item,incidenciaslugar );
@@ -129,13 +143,13 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
 
 
@@ -174,24 +188,10 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
                 AlertDialog.Builder builder=new AlertDialog.Builder(NuevaIncidencia.this);
               /*  List<Incidencia> colorsArray=new ArrayList<Incidencia>();*/
                 String[] colorsArray = new String[]{
-                    "Luis Choy Vega",
-                    "Juan",
-                    "Jose",
-                    "Antonio",
-                    "Mauricio",
-                    "Genaro",
-                    "Carlos",
-                    "Juan",
-                    "Jose",
-                    "Antonio",
-                    "Mauricio",
-                    "Genaro",
-                    "Carlos",
-                    "Juan",
-                    "Jose",
-                    "Antonio",
-                    "Mauricio",
-                    "Genaro",
+                    "Leticia Mendez Cotera",
+                    "Joaquín Castañeda Losio",
+                    "Luis Choy Vega"
+
 
                 };
                 final boolean[] checkedColorsArray = new boolean[colorsArray.length];
@@ -233,7 +233,108 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
 
 
 
+    }
 
+    private void Register() {
+        String tipo=spinnerTipo.getSelectedItem().toString();
+        String texto= mTextV.getText().toString();
+        String adios=descripcion.getText().toString();
+        String grado = spinnerGrado.getSelectedItem().toString();
+        String lugar=spinnerLugar.getSelectedItem().toString();
+        String seccion=spinnerSeccion.getSelectedItem().toString();
+      /*  String
+*/
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        final String token = sp.getString("token", "usuario");
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest  = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer " + token)
+                    .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+            .client(client)
+            .baseUrl(API_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+        final ApiService service = retrofit.create(ApiService.class);
+
+    }
+
+    private void obtenerSeccion() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        final String token = sp.getString("token", "usuario");
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                Request newRequest  = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer " + token)
+                    .build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+        Retrofit retrofit = new Retrofit.Builder()
+            .client(client)
+            .baseUrl(API_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+        final ApiService service = retrofit.create(ApiService.class);
+        Call<List<Seccion>> call=service.getSeccion();
+        call.enqueue(new Callback<List<Seccion>>() {
+            @Override
+            public void onResponse(Call<List<Seccion>> call, Response<List<Seccion>> response) {
+                if (response.isSuccessful()){
+
+                    List<Seccion> seccion=response.body();
+                    Log.d("Activity","seccion"+seccion);
+                    if(response.isSuccessful()){
+                    poblarSpinnerGrado(seccion);
+                        poblarSpinnerSeccion(seccion);
+
+
+
+
+
+
+
+
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"ads,", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Seccion>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void poblarSpinnerSeccion(List<Seccion> seccion) {
+        List<String> list=new ArrayList<String>();
+        for (Seccion r: seccion){
+            list.add(r.getSeccion());
+
+        }
+
+        ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,list );
+        spinnerSeccion.setAdapter(adapter);
+    }
+
+    private void poblarSpinnerGrado(List<Seccion> seccion) {
+        List<String> list=new ArrayList<String>();
+        for (Seccion r: seccion){
+            list.add(r.getGrado());
+
+        }
+
+        ArrayAdapter<CharSequence> adapter=new ArrayAdapter(this,R.layout.spinner_item,list );
+        spinnerGrado.setAdapter(adapter);
     }
 
 
@@ -263,9 +364,10 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
                 if (response.isSuccessful()){
 
                     List<Lugar> lugar=response.body();
-                    Log.d("Activity","lugar"+lugar);
+                    Log.d("","lugar"+lugar);
                     if(response.isSuccessful()){
                         poblarSpinnerLugar(lugar);
+
 
 
 
@@ -305,6 +407,7 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         spinnerlugar.setAdapter(adapter);
 
     }
+
 
     private void obtenerDatosTipo() {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -366,6 +469,11 @@ public class NuevaIncidencia  extends AppCompatActivity implements View.OnClickL
         spinnerTipo.setAdapter(adapter);
 
     }
+
+
+
+
+    
 
 
     @Override
